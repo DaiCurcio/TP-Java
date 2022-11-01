@@ -1,7 +1,7 @@
 package com.example.Consultorio.controllers;
 
 import com.example.Consultorio.models.TurnoModel;
-import com.example.Consultorio.services.UsuarioService;
+import com.example.Consultorio.services.TurnoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -11,7 +11,7 @@ import java.util.ArrayList;
 @RequestMapping("/usuario")
 public class TurnoController {
     @Autowired
-    UsuarioService usuarioService;
+    TurnoService usuarioService;
 
     @GetMapping()
     public ArrayList<TurnoModel> obtenerUsuarios(){
