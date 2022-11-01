@@ -1,17 +1,38 @@
 package com.example.Consultorio.models;
 
 import javax.persistence.*;
+import java.time.LocalDate;
+import java.time.LocalTime;
 
 @Entity
-@Table(name = "usuario")
+@Table(name = "turno")
 public class TurnoModel {
+    //atributos
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(unique=true, nullable = false)
     private Long id;
-    private String nombre;
-    private String email;
-    private Integer prioridad;
+    private LocalDate date;
+    private LocalTime time;
+
+    //relaciones con paciente y dentista
+    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @JoinColumn(name = "paciente_id", referencedColumnName="id")
+    private PacienteModel pacienteModel;
+
+    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @JoinColumn(name = "odontologo_id", referencedColumnName="id")
+    private DentistaModel dentistaModel;
+
+    public TurnoModel() {
+    }
+
+    public TurnoModel(Long id, LocalDate date, LocalTime time, PacienteModel pacienteModel, DentistaModel dentistaModel) {
+        this.id = id;
+        this.date = date;
+        this.time = time;
+        this.pacienteModel = pacienteModel;
+        this.dentistaModel = dentistaModel;
+    }
 
     public Long getId() {
         return id;
@@ -21,27 +42,35 @@ public class TurnoModel {
         this.id = id;
     }
 
-    public String getNombre() {
-        return nombre;
+    public LocalDate getDate() {
+        return date;
     }
 
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
+    public void setDate(LocalDate date) {
+        this.date = date;
     }
 
-    public String getEmail() {
-        return email;
+    public LocalTime getTime() {
+        return time;
     }
 
-    public void setEmail(String email) {
-        this.email = email;
+    public void setTime(LocalTime time) {
+        this.time = time;
     }
 
-    public Integer getPrioridad() {
-        return prioridad;
+    public PacienteModel getPacienteModel() {
+        return pacienteModel;
     }
 
-    public void setPrioridad(Integer prioridad) {
-        this.prioridad = prioridad;
+    public void setPacienteModel(PacienteModel pacienteModel) {
+        this.pacienteModel = pacienteModel;
+    }
+
+    public DentistaModel getDentistaModel() {
+        return dentistaModel;
+    }
+
+    public void setDentistaModel(DentistaModel dentistaModel) {
+        this.dentistaModel = dentistaModel;
     }
 }
