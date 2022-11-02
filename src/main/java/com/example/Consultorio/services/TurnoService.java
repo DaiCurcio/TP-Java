@@ -10,13 +10,15 @@ import java.util.ArrayList;
 @Service
 public class TurnoService {
     @Autowired
-    TurnoRepository usuarioRepository;
+    TurnoRepository turnoRepository;
 
-    public ArrayList<TurnoModel> obtenerUsuarios(){
-        return (ArrayList<TurnoModel>) usuarioRepository.findAll();
+    //obtener lista como array
+    public ArrayList<TurnoModel> obtenerTodosLosTurnos(){
+        return (ArrayList<TurnoModel>)turnoRepository.findAll();
+    }
+    //recibir informacion y guardarla
+    public TurnoModel guardarTurno(TurnoModel turno){
+        return turnoRepository.save(turno);
     }
 
-    public TurnoModel guardarUsuario(TurnoModel usuario){
-        return usuarioRepository.save(usuario);
-    }
 }

@@ -14,7 +14,7 @@ public class DentistaService {
 
     //obtener lista como array
     public ArrayList<DentistaModel> obtenerTodosLosDentistas(){
-        return (ArrayList<DentistaModel>)dentistaRepository.finda();
+        return (ArrayList<DentistaModel>)dentistaRepository.findAll();
     }
 
     // recibir informacion y guardarla

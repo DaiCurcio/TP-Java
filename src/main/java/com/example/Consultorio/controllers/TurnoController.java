@@ -11,16 +11,19 @@ import java.util.ArrayList;
 @RequestMapping("/usuario")
 public class TurnoController {
     @Autowired
-    TurnoService usuarioService;
+    TurnoService turnoService;
 
-    @GetMapping()
-    public ArrayList<TurnoModel> obtenerUsuarios(){
-        return usuarioService.obtenerUsuarios();
+    // cuando llega una peticion get, lo ejecuta y trae el turno
+    @GetMapping() //es para leer
+    public ArrayList<TurnoModel> obtenerTodosLosTurnos(){
+        return turnoService.obtenerTodosLosTurnos();
     }
+    // llamar y guardar el turno
+    @PostMapping() // es para crear uno nuevo
+    public TurnoModel guardarTurno(@RequestBody TurnoModel turno) {
+        return this.turnoService.guardarTurno(turno);
 
-    @PostMapping()
-    public TurnoModel guardarUsuario(@RequestBody TurnoModel usuario){
-        return this.usuarioService.guardarUsuario(usuario);
+
     }
 
 }
