@@ -16,11 +16,11 @@ public class TurnoModel {
 
     //relaciones con paciente y dentista
     @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    @JoinColumn(name = "paciente_id", referencedColumnName="id")
+    @JoinColumn(name = "id_paciente", referencedColumnName="id_paciente")
     private PacienteModel pacienteModel;
 
     @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    @JoinColumn(name = "odontologo_id", referencedColumnName="id")
+    @JoinColumn(name = "id_dentista", referencedColumnName="id_dentista")
     private DentistaModel dentistaModel;
 
     public TurnoModel() {

@@ -17,8 +17,8 @@ public class DentistaModel {
     private String apellido;
     private int matricula;
 
-    //relacion con turnos
-    //@OneToMany(mappedBy = "dentista", fetch = FetchType.LAZY)
+    // relacion con turnos
+    @OneToMany(fetch = FetchType.LAZY)
     private Set<TurnoModel> turno = new HashSet<>();
 
     public DentistaModel() {

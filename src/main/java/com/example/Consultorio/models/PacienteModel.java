@@ -19,7 +19,7 @@ public class PacienteModel {
     private String fechaTurno = (new SimpleDateFormat("dd/MM/yyyy")).format(new Date());
 
     // Relacion con turno
-    //@OneToMany(mappedBy = "paciente", fetch = FetchType.LAZY)
+    @OneToMany(fetch = FetchType.LAZY)
     private Set<TurnoModel> turno = new HashSet<>();
 
     public PacienteModel() {
