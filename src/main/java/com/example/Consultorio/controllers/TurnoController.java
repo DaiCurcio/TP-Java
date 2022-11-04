@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.ArrayList;
 
 @RestController
-@RequestMapping("/usuario")
+@RequestMapping("/Turno")
 public class TurnoController {
     @Autowired
     TurnoService turnoService;
