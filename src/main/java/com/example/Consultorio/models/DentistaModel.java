@@ -11,7 +11,7 @@ public class DentistaModel {
     //atributos
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id_dentista;
+    private int id_dentista;
 
     private String nombre;
     private String apellido;
@@ -25,8 +25,7 @@ public class DentistaModel {
     }
 
     //constructor
-
-    public DentistaModel(Long id_dentista, String nombre, String apellido, int matricula, Set<TurnoModel> turno) {
+    public DentistaModel(int id_dentista, String nombre, String apellido, int matricula, Set<TurnoModel> turno) {
         this.id_dentista = id_dentista;
         this.nombre = nombre;
         this.apellido = apellido;
@@ -34,11 +33,11 @@ public class DentistaModel {
         this.turno = turno;
     }
 
-    public Long getId_dentista() {
+    public int getId_dentista() {
         return id_dentista;
     }
 
-    public void setId_dentista(Long id_dentista) {
+    public void setId_dentista(int id_dentista) {
         this.id_dentista = id_dentista;
     }
 

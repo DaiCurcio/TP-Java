@@ -12,7 +12,7 @@ public class PacienteModel {
     //atributos
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id_paciente;
+    private int id_paciente;
 
     private String nombre;
     private String apellido;
@@ -25,7 +25,7 @@ public class PacienteModel {
     public PacienteModel() {
     }
 
-    public PacienteModel(Long id_paciente, String nombre, String apellido, String fechaTurno, Set<TurnoModel> turno) {
+    public PacienteModel(int id_paciente, String nombre, String apellido, String fechaTurno, Set<TurnoModel> turno) {
         this.id_paciente = id_paciente;
         this.nombre = nombre;
         this.apellido = apellido;
@@ -33,11 +33,11 @@ public class PacienteModel {
         this.turno = turno;
     }
 
-    public Long getId_paciente() {
+    public int getId_paciente() {
         return id_paciente;
     }
 
-    public void setId_paciente(Long id_paciente) {
+    public void setId_paciente(int id_paciente) {
         this.id_paciente = id_paciente;
     }
 

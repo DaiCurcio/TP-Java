@@ -5,5 +5,5 @@ import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface DentistaRepository extends CrudRepository<DentistaModel,Long> {
+public interface DentistaRepository extends CrudRepository<DentistaModel,Integer> {
 }

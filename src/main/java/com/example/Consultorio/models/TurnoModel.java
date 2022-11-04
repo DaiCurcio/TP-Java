@@ -10,7 +10,7 @@ public class TurnoModel {
     //atributos
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private Integer id;
     private LocalDate date;
     private LocalTime time;
 
@@ -26,7 +26,7 @@ public class TurnoModel {
     public TurnoModel() {
     }
 
-    public TurnoModel(Long id, LocalDate date, LocalTime time, PacienteModel pacienteModel, DentistaModel dentistaModel) {
+    public TurnoModel(Integer id, LocalDate date, LocalTime time, PacienteModel pacienteModel, DentistaModel dentistaModel) {
         this.id = id;
         this.date = date;
         this.time = time;
@@ -34,11 +34,11 @@ public class TurnoModel {
         this.dentistaModel = dentistaModel;
     }
 
-    public Long getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
