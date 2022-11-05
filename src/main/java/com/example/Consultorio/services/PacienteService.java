@@ -1,5 +1,6 @@
 package com.example.Consultorio.services;
 
+import com.example.Consultorio.models.DentistaModel;
 import com.example.Consultorio.models.PacienteModel;
 import com.example.Consultorio.repositories.PacienteRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,15 +13,16 @@ public class PacienteService {
 
     @Autowired
     PacienteRepository pacienteRepository;
-
-    //obtener lista como array
-    public ArrayList<PacienteModel> obtenerTodosLosPacientes(){
-        return (ArrayList<PacienteModel>)pacienteRepository.findAll();
-    }
-    // recibir informacion y guardarla
-    public PacienteModel guardarPaciente(PacienteModel paciente){
-        return pacienteRepository.save(paciente);
-
+    public ArrayList<PacienteModel> LeerListaDePacientes() {
+        return (ArrayList<PacienteModel>)PacienteRepository.findAll();
     }
 
+    public PacienteModel createPaciente(PacienteModel Paciente) {return pacienteRepository.save(new PacienteModel());
+    }
+
+    public PacienteModel updatePaciente(PacienteModel paciente) {return pacienteRepository.save(paciente);
+    }
+
+    public PacienteModel deletePaciente(PacienteModel pacienteModel) {return pacienteRepository.save(pacienteModel);
+    }
 }
