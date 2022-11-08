@@ -32,17 +32,14 @@ public class DentistaController {
     }
     @PutMapping("{id_dentista}") //UPDATE
     public DentistaModel updateDentista(@PathVariable int id_dentista, @RequestBody DentistaModel dentista){
-        updateDentista().setId_dentista(dentista.getId_dentista());
-        updateDentista().setMatricula(dentista.getMatricula());
-        updateDentista().setApellido(dentista.getApellido());
-        updateDentista().setNombre(dentista.getNombre());
-        updateDentista().setTurno(dentista.getTurno());
+        dentistaService.updateDentista(dentista).setId_dentista(dentista.getId_dentista());
+        dentistaService.updateDentista(dentista).setMatricula(dentista.getMatricula());
+        dentistaService.updateDentista(dentista).setApellido(dentista.getApellido());
+        dentistaService.updateDentista(dentista).setNombre(dentista.getNombre());
+        dentistaService.updateDentista(dentista).setTurno(dentista.getTurno());
         return this.dentistaService.updateDentista(dentista);
     }
-       //cree esto para que me ande el update
-    private DentistaModel updateDentista() {
-        return null;
-    }
+
     @DeleteMapping("{id_dentista}") //DELETE
     public DentistaModel deleteDentista(@PathVariable int id_dentista){
         DentistaModel dentista = dentistarepo.findById(id_dentista).orElseThrow();

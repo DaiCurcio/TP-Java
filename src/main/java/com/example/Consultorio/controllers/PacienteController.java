@@ -29,17 +29,14 @@ public class PacienteController {
     }
     @PutMapping("{id_paciente}") //UPDATE
     public PacienteModel updatePaciente(@PathVariable int id_paciente, @RequestBody PacienteModel paciente){
-        updatePaciente().setId_paciente(paciente.getId_paciente());
-        updatePaciente().setFechaTurno(paciente.getFechaTurno());
-        updatePaciente().setApellido(paciente.getApellido());
-        updatePaciente().setNombre(paciente.getNombre());
-        updatePaciente().setTurno(paciente.getTurno());
+        pacienteService.updatePaciente(paciente).setId_paciente(paciente.getId_paciente());
+        pacienteService.updatePaciente(paciente).setFechaTurno(paciente.getFechaTurno());
+        pacienteService.updatePaciente(paciente).setApellido(paciente.getApellido());
+        pacienteService.updatePaciente(paciente).setNombre(paciente.getNombre());
+        pacienteService.updatePaciente(paciente).setTurno(paciente.getTurno());
         return this.pacienteService.updatePaciente(paciente);
     }
-    //cree esto para que me ande el update
-    private PacienteModel updatePaciente() {
-        return null;
-    }
+
     @DeleteMapping("{id_paciente}") //DELETE
     public PacienteModel deletePaciente(@PathVariable int id_paciente){
         PacienteModel pacienteModel = pacienteRepository.findById(id_paciente).orElseThrow();
