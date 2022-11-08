@@ -42,9 +42,9 @@ public class TurnoController {
 
     @DeleteMapping("{id_turno}") //DELETE
     public TurnoModel deleteTurno(@PathVariable int id_turno) {
-        TurnoModel turnoModel = turnosrepo.findAll().stream().filter(x -> x.getId() == id_turno).findFirst().orElseThrow();
+        TurnoModel turnoModel = turnosrepo.findById(id_turno).orElseThrow();
         turnosrepo.delete(turnoModel);
-        return turnoModel;
+        return this.turnoService.deleteTurno(turnoModel);
     }
 
 }
