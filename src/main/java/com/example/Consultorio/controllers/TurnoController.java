@@ -10,12 +10,16 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/Turno")
 public class TurnoController {
     @Autowired
     TurnoService turnoService;
+
+    @Autowired
+    public TurnoRepository turnosrepo;
 
     @GetMapping() //READ
     public ArrayList<TurnoModel> LeerListaDeTurnos(){
@@ -28,19 +32,19 @@ public class TurnoController {
     }
     @PutMapping("{id_turno}") //UPDATE
     public TurnoModel updateTurno(@PathVariable int id_turno, @RequestBody TurnoModel turnoModel){
-        updateTurno().setId(turnoModel.getId());
-        updateTurno().setDate(turnoModel.getDate());
-        updateTurno().setTime(turnoModel.getTime());
-        updateTurno().setDentistaModel(new DentistaModel());
-        updateTurno().setPacienteModel(new PacienteModel());
+        turnoService.updateTurno(turnoModel).setId(turnoModel.getId());
+        turnoService.updateTurno(turnoModel).setDate(turnoModel.getDate());
+        turnoService.updateTurno(turnoModel).setTime(turnoModel.getTime());
+        turnoService.updateTurno(turnoModel).setDentistaModel(new DentistaModel());
+        turnoService.updateTurno(turnoModel).setPacienteModel(new PacienteModel());
         return this.turnoService.updateTurno(turnoModel);
     }
 
     @DeleteMapping("{id_turno}") //DELETE
     public TurnoModel deleteTurno(@PathVariable int id_turno) {
-        TurnoModel turnoModel = TurnoRepository.findById(id_turno);
-        TurnoRepository.delete(turnoModel);
-        return this.turnoService.deleteTurno(turnoModel);
+        TurnoModel turnoModel = turnosrepo.findAll().stream().filter(x -> x.getId() == id_turno).findFirst().orElseThrow();
+        turnosrepo.delete(turnoModel);
+        return turnoModel;
     }
 
 }

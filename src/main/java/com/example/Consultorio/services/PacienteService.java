@@ -14,7 +14,7 @@ public class PacienteService {
     @Autowired
     PacienteRepository pacienteRepository;
     public ArrayList<PacienteModel> LeerListaDePacientes() {
-        return (ArrayList<PacienteModel>)PacienteRepository.findAll();
+        return (ArrayList<PacienteModel>)pacienteRepository.findAll();
     }
 
     public PacienteModel createPaciente(PacienteModel Paciente) {return pacienteRepository.save(new PacienteModel());

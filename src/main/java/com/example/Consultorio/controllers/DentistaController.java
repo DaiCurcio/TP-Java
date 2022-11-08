@@ -17,6 +17,9 @@ public class DentistaController {
     @Autowired
     DentistaService dentistaService;
 
+    @Autowired
+    DentistaRepository dentistarepo;
+
     // cuando llega una peticion get, lo ejecuta y trae el dentista
     @GetMapping() //READ
     public ArrayList<DentistaModel> LeerListaDeDentistas(){
@@ -42,8 +45,8 @@ public class DentistaController {
     }
     @DeleteMapping("{id_dentista}") //DELETE
     public DentistaModel deleteDentista(@PathVariable int id_dentista){
-        DentistaModel dentista = DentistaRepository.findById(id_dentista);
-        DentistaRepository.delete(dentista);
+        DentistaModel dentista = dentistarepo.findById(id_dentista).orElseThrow();
+        dentistarepo.delete(dentista);
         return this.dentistaService.deleteDentista(dentista);
     }
 

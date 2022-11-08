@@ -42,8 +42,8 @@ public class PacienteController {
     }
     @DeleteMapping("{id_paciente}") //DELETE
     public PacienteModel deletePaciente(@PathVariable int id_paciente){
-        PacienteModel pacienteModel = PacienteRepository.findById(id_paciente);
-        pacienteRepository.delete(PacienteModel);
+        PacienteModel pacienteModel = pacienteRepository.findById(id_paciente).orElseThrow();
+        pacienteRepository.delete(pacienteModel);
         return this.pacienteService.deletePaciente(pacienteModel);
     }
 
