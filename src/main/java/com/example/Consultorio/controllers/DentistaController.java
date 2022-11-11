@@ -28,8 +28,8 @@ public class DentistaController {
     public DentistaModel createDentista(@RequestBody DentistaModel dentistaModel){
         return this.dentistaService.createDentista(dentistaModel);
     }
-    @PutMapping("{id}") //UPDATE
-    public DentistaModel updateDentista(@PathVariable int id_dentista, @RequestBody DentistaModel dentistaModel){
+    @PutMapping("/{id_dentista}") //UPDATE
+    public DentistaModel updateDentista(@PathVariable Integer id_dentista, @RequestBody DentistaModel dentistaModel){
         dentistaService.updateDentista(dentistaModel).setId_dentista(dentistaModel.getId_dentista());
         dentistaService.updateDentista(dentistaModel).setApellido(dentistaModel.getApellido());
         dentistaService.updateDentista(dentistaModel).setNombre(dentistaModel.getNombre());
@@ -37,8 +37,8 @@ public class DentistaController {
         return this.dentistaService.updateDentista(dentistaModel);
     }
 
-    @DeleteMapping("{id}") //DELETE
-    public DentistaModel deleteDentista(@PathVariable int id_dentista){
+    @DeleteMapping("/{id_dentista}") //DELETE
+    public DentistaModel deleteDentista(@PathVariable Integer id_dentista){
         DentistaModel dentistaModel = dentistarepo.findById(id_dentista).orElseThrow();
         dentistarepo.delete(dentistaModel);
         return this.dentistaService.deleteDentista(dentistaModel);

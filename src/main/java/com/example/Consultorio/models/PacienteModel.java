@@ -12,7 +12,7 @@ public class PacienteModel {
     //atributos
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id_paciente;
+    private Integer id_paciente;
 
     private String nombre;
     private String apellido;
@@ -22,7 +22,7 @@ public class PacienteModel {
     @OneToMany(fetch = FetchType.LAZY)
     private Set<TurnoModel> turno = new HashSet<>();
 
-    public PacienteModel() {
+   /* public PacienteModel() {
     }
 
     public PacienteModel(int id_paciente, String nombre, String apellido, String fechaTurno, Set<TurnoModel> turno) {
@@ -31,13 +31,13 @@ public class PacienteModel {
         this.apellido = apellido;
         this.fechaTurno = fechaTurno;
         this.turno = turno;
-    }
+ */
 
-    public int getId_paciente() {
+    public Integer getId_paciente() {
         return id_paciente;
     }
 
-    public void setId_paciente(int id_paciente) {
+    public void setId_paciente(Integer id_paciente) {
         this.id_paciente = id_paciente;
     }
 

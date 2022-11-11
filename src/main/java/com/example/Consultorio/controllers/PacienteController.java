@@ -25,7 +25,7 @@ public class PacienteController {
         return this.pacienteService.createPaciente(pacienteModel);
     }
     @PutMapping("{id_paciente}") //UPDATE
-    public PacienteModel updatePaciente(@PathVariable int id_paciente, @RequestBody PacienteModel pacienteModel){
+    public PacienteModel updatePaciente(@PathVariable Integer id_paciente, @RequestBody PacienteModel pacienteModel){
         pacienteService.updatePaciente(pacienteModel).setId_paciente(pacienteModel.getId_paciente());
         pacienteService.updatePaciente(pacienteModel).setFechaTurno(pacienteModel.getFechaTurno());
         pacienteService.updatePaciente(pacienteModel).setApellido(pacienteModel.getApellido());
@@ -35,7 +35,7 @@ public class PacienteController {
     }
 
     @DeleteMapping("{id_paciente}") //DELETE
-    public PacienteModel deletePaciente(@PathVariable int id_paciente){
+    public PacienteModel deletePaciente(@PathVariable Integer id_paciente){
         PacienteModel pacienteModel = pacienteRepository.findById(id_paciente).orElseThrow();
         pacienteRepository.delete(pacienteModel);
         return this.pacienteService.deletePaciente(pacienteModel);

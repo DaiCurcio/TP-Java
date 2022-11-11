@@ -15,7 +15,7 @@ public class DentistaModel {
 
     private String nombre;
     private String apellido;
-    private int matricula;
+    private Integer matricula;
 
     // relacion con turnos
     @OneToMany(fetch = FetchType.LAZY)
@@ -25,13 +25,14 @@ public class DentistaModel {
     }
 
     //constructor
-    public DentistaModel(int id_dentista, String nombre, String apellido, int matricula, Set<TurnoModel> turno) {
+
+   /* public DentistaModel(int id_dentista, String nombre, String apellido, Integer matricula, Set<TurnoModel> turno) {
         this.id_dentista = id_dentista;
         this.nombre = nombre;
         this.apellido = apellido;
         this.matricula = matricula;
         this.turno = turno;
-    }
+    } */
 
     public int getId_dentista() {
         return id_dentista;
@@ -57,11 +58,11 @@ public class DentistaModel {
         this.apellido = apellido;
     }
 
-    public int getMatricula() {
+    public Integer getMatricula() {
         return matricula;
     }
 
-    public void setMatricula(int matricula) {
+    public void setMatricula(Integer matricula) {
         this.matricula = matricula;
     }
 
