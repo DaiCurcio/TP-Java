@@ -1,8 +1,5 @@
 package com.example.Consultorio.controllers;
-
-import com.example.Consultorio.models.DentistaModel;
 import com.example.Consultorio.models.PacienteModel;
-import com.example.Consultorio.repositories.DentistaRepository;
 import com.example.Consultorio.repositories.PacienteRepository;
 import com.example.Consultorio.services.PacienteService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,17 +21,17 @@ public class PacienteController {
     }
 
     @PostMapping() //CREATE
-    public PacienteModel createPaciente(@RequestBody PacienteModel paciente){
-        return this.pacienteService.createPaciente(paciente);
+    public PacienteModel createPaciente(@RequestBody PacienteModel pacienteModel){
+        return this.pacienteService.createPaciente(pacienteModel);
     }
     @PutMapping("{id_paciente}") //UPDATE
-    public PacienteModel updatePaciente(@PathVariable int id_paciente, @RequestBody PacienteModel paciente){
-        pacienteService.updatePaciente(paciente).setId_paciente(paciente.getId_paciente());
-        pacienteService.updatePaciente(paciente).setFechaTurno(paciente.getFechaTurno());
-        pacienteService.updatePaciente(paciente).setApellido(paciente.getApellido());
-        pacienteService.updatePaciente(paciente).setNombre(paciente.getNombre());
-        pacienteService.updatePaciente(paciente).setTurno(paciente.getTurno());
-        return this.pacienteService.updatePaciente(paciente);
+    public PacienteModel updatePaciente(@PathVariable int id_paciente, @RequestBody PacienteModel pacienteModel){
+        pacienteService.updatePaciente(pacienteModel).setId_paciente(pacienteModel.getId_paciente());
+        pacienteService.updatePaciente(pacienteModel).setFechaTurno(pacienteModel.getFechaTurno());
+        pacienteService.updatePaciente(pacienteModel).setApellido(pacienteModel.getApellido());
+        pacienteService.updatePaciente(pacienteModel).setNombre(pacienteModel.getNombre());
+        pacienteService.updatePaciente(pacienteModel).setTurno(pacienteModel.getTurno());
+        return this.pacienteService.updatePaciente(pacienteModel);
     }
 
     @DeleteMapping("{id_paciente}") //DELETE
