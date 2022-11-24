@@ -7,39 +7,46 @@ import java.time.LocalTime;
 @Entity
 @Table(name = "turno")
 public class TurnoModel {
-    //atributos
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id_turno;
-    private LocalDate date;
-    private LocalTime time;
-
-    //relaciones con paciente y dentista
-    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    @JoinColumn(name = "id_paciente", referencedColumnName="id_paciente")
-    private PacienteModel pacienteModel;
-
-    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    @JoinColumn(name = "id_dentista", referencedColumnName="id_dentista")
-    private DentistaModel dentistaModel;
+    private Integer id;
+    private Integer id_dentista;
+    private Integer id_paciente;
+    private LocalDate date = LocalDate.now();
+    private LocalTime time = LocalTime.now();
 
     public TurnoModel() {
     }
 
-   /* public TurnoModel(Integer id_turno, LocalDate date, LocalTime time, PacienteModel pacienteModel, DentistaModel dentistaModel) {
-        this.id_turno = id_turno;
+    public TurnoModel(LocalDate date, LocalTime time, Integer id_dentista, Integer id_paciente) {
         this.date = date;
         this.time = time;
-        this.pacienteModel = pacienteModel;
-        this.dentistaModel = dentistaModel;
-    }*/
-
-    public Integer getId_turno() {
-        return id_turno;
+        this.id_dentista = id_dentista;
+        this.id_paciente = id_paciente;
     }
 
-    public void setId_turno(Integer id_turno) {
-        this.id_turno = id_turno;
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    public Integer getId_dentista() {
+        return id_dentista;
+    }
+
+    public void setId_dentista(Integer id_dentista) {
+        this.id_dentista = id_dentista;
+    }
+
+    public Integer getId_paciente() {
+        return id_paciente;
+    }
+
+    public void setId_paciente(Integer id_paciente) {
+        this.id_paciente = id_paciente;
     }
 
     public LocalDate getDate() {
@@ -56,21 +63,5 @@ public class TurnoModel {
 
     public void setTime(LocalTime time) {
         this.time = time;
-    }
-
-    public PacienteModel getPacienteModel() {
-        return pacienteModel;
-    }
-
-    public void setPacienteModel(PacienteModel pacienteModel) {
-        this.pacienteModel = pacienteModel;
-    }
-
-    public DentistaModel getDentistaModel() {
-        return dentistaModel;
-    }
-
-    public void setDentistaModel(DentistaModel dentistaModel) {
-        this.dentistaModel = dentistaModel;
     }
 }
