@@ -8,31 +8,22 @@ import java.util.Set;
 @Table(name = "dentista")
 public class DentistaModel {
 
-    //atributos
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id_dentista;
-
     private String nombre;
     private String apellido;
     private Integer matricula;
 
-    // relacion con turnos
-    @OneToMany(fetch = FetchType.LAZY)
-    private Set<TurnoModel> turno = new HashSet<>();
-
-    public DentistaModel() {
-    }
-
-    //constructor
-
-   /* public DentistaModel(int id_dentista, String nombre, String apellido, Integer matricula, Set<TurnoModel> turno) {
+    public DentistaModel(int id_dentista, String nombre, String apellido, Integer matricula) {
         this.id_dentista = id_dentista;
         this.nombre = nombre;
         this.apellido = apellido;
         this.matricula = matricula;
-        this.turno = turno;
-    } */
+    }
+
+    public DentistaModel() {
+    }
 
     public int getId_dentista() {
         return id_dentista;
@@ -66,11 +57,4 @@ public class DentistaModel {
         this.matricula = matricula;
     }
 
-    public Set<TurnoModel> getTurno() {
-        return turno;
-    }
-
-    public void setTurno(Set<TurnoModel> turno) {
-        this.turno = turno;
-    }
 }

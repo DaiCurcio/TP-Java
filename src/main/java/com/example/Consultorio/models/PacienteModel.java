@@ -12,28 +12,23 @@ public class PacienteModel {
     //atributos
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id_paciente;
-
+    private int id_paciente;
     private String nombre;
     private String apellido;
     private String fechaTurno = (new SimpleDateFormat("dd/MM/yyyy")).format(new Date());
 
-    // Relacion con turno
-    @OneToMany(fetch = FetchType.LAZY)
-    private Set<TurnoModel> turno = new HashSet<>();
-
-   /* public PacienteModel() {
-    }
-
-    public PacienteModel(int id_paciente, String nombre, String apellido, String fechaTurno, Set<TurnoModel> turno) {
+    public PacienteModel(Integer id_paciente, String nombre, String apellido, String fechaTurno, Set<TurnoModel> turno) {
         this.id_paciente = id_paciente;
         this.nombre = nombre;
         this.apellido = apellido;
         this.fechaTurno = fechaTurno;
-        this.turno = turno;
- */
+    }
 
-    public Integer getId_paciente() {
+    public PacienteModel() {
+
+    }
+
+    public int getId_paciente() {
         return id_paciente;
     }
 
@@ -63,13 +58,5 @@ public class PacienteModel {
 
     public void setFechaTurno(String fechaTurno) {
         this.fechaTurno = fechaTurno;
-    }
-
-    public Set<TurnoModel> getTurno() {
-        return turno;
-    }
-
-    public void setTurno(Set<TurnoModel> turno) {
-        this.turno = turno;
     }
 }
