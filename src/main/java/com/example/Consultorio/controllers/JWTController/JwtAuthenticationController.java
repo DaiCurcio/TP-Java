@@ -1,14 +1,8 @@
-package com.freetube.JavaFreetube.Controllers.JWTController;
+package com.example.Consultorio.controllers.JWTController;
 
-import java.util.Date;
-import java.util.Objects;
-
-import com.freetube.JavaFreetube.Configurations.JwtTokenUtil;
-
-import com.freetube.JavaFreetube.Models.JWTModels.JwtRequest;
-import com.freetube.JavaFreetube.Models.JWTModels.JwtResponse;
-import com.freetube.JavaFreetube.Models.Usuarios;
-import com.freetube.JavaFreetube.Repositories.UsuariosRepo;
+import com.example.Consultorio.Configurations.JwtTokenUtil;
+import com.example.Consultorio.models.JWTModels.JwtRequest;
+import com.example.Consultorio.models.JWTModels.JwtResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -17,13 +11,12 @@ import org.springframework.security.authentication.DisabledException;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
-import static com.freetube.JavaFreetube.Configurations.JwtTokenUtil.JWT_TOKEN_VALIDITY;
+import java.util.Date;
+import java.util.Objects;
+
+import static com.example.Consultorio.Configurations.JwtTokenUtil.JWT_TOKEN_VALIDITY;
 
 
 @RestController
@@ -39,8 +32,6 @@ public class JwtAuthenticationController {
 	@Autowired
 	private UserDetailsService jwtInMemoryUserDetailsService;
 
-	@Autowired
-	public UsuariosRepo repo;
 
 	@RequestMapping(value = "/authenticate", method = RequestMethod.POST)
 	public ResponseEntity<?> createAuthenticationToken(@RequestBody JwtRequest authenticationRequest)
@@ -54,7 +45,6 @@ public class JwtAuthenticationController {
 		final String token = jwtTokenUtil.generateToken(userDetails);
 		final String roles = String.valueOf(userDetails.getAuthorities());
 		
-		final int id_usuario = getID(userDetails.getUsername());
 
 		String expires = JWT_TOKEN_VALIDITY / 60 + " minutes";
 
@@ -63,7 +53,7 @@ public class JwtAuthenticationController {
 		tokenGivenAt = tokenGivenAt.substring(11, 19);
 		tokenExpiresAt = tokenExpiresAt.substring(11, 19);
 
-		return ResponseEntity.ok(new JwtResponse(token, String.valueOf(id_usuario),
+		return ResponseEntity.ok(new JwtResponse(token, "1",
 				roles, expires, tokenGivenAt, tokenExpiresAt));
 	}
 
@@ -80,9 +70,4 @@ public class JwtAuthenticationController {
 		}
 	}
 
-	public int getID(String username)
-	{
-		Usuarios us =  repo.findAll().stream().filter(x -> x.usuario.contains(username)).findFirst().get();
-		return us.id_usuario;
-	}
 }

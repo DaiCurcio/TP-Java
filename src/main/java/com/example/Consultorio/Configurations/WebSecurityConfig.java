@@ -1,5 +1,6 @@
-package com.freetube.JavaFreetube.Configurations;
+package com.example.Consultorio.Configurations;
 
+import com.example.Consultorio.Configurations.JwtAuthenticationEntryPoint;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -54,14 +55,12 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 		// add .antMatchers(HttpMethod.GET,"/Videos").hasRole("admin") to filter an EP by role
 		httpSecurity.csrf().disable().cors().and()
 				.authorizeRequests()
-				.antMatchers(HttpMethod.GET,"/info/endpoints").hasRole("admin")
 				.antMatchers("/authenticate").permitAll()
 				.anyRequest().authenticated().and()
 				.exceptionHandling()
 				.authenticationEntryPoint(jwtAuthenticationEntryPoint).and().
 				sessionManagement()
 				.sessionCreationPolicy(SessionCreationPolicy.STATELESS);
-
 		httpSecurity.addFilterBefore(jwtRequestFilter, UsernamePasswordAuthenticationFilter.class);
 	}
 }

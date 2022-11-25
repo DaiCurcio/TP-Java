@@ -1,4 +1,4 @@
-package com.freetube.JavaFreetube.Configurations;
+package com.example.Consultorio.Configurations;
 
 import java.io.IOException;
 import java.io.Serializable;
