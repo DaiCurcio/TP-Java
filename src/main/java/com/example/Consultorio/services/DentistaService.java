@@ -38,12 +38,12 @@ public class DentistaService implements IDentistaService
     //UPDATE DENTISTA
     public DentistaModel updateDentista(DentistaModel dentistaModel)
     {
-        boolean existsPaciente = dentistaRepository
+        boolean existsDentista = dentistaRepository
                 .findAll()
                 .stream()
                 .filter(x -> x.getId_dentista() == (dentistaModel.getId_dentista()))
                 .count() == 1;
-        if(!existsPaciente)
+        if(!existsDentista)
         {
             return null;
         }
