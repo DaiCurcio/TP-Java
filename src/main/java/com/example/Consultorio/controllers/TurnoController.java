@@ -2,11 +2,14 @@ package com.example.Consultorio.controllers;
 
 import com.example.Consultorio.models.TurnoModel;
 import com.example.Consultorio.repositories.TurnoRepository;
+import com.example.Consultorio.services.CrearArchivo;
 import com.example.Consultorio.services.Interfaces.ITurnoService;
 import com.example.Consultorio.services.TurnoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.ArrayList;
 
 
@@ -19,9 +22,15 @@ public class TurnoController {
     @Autowired
     public TurnoRepository turnosrepo;
 
-    @GetMapping() //READ
-    public ArrayList<TurnoModel> LeerListaDeTurnos()
+    public CrearArchivo ca;
+
+    public TurnoController(CrearArchivo ca)
     {
+        this.ca = ca;
+    }
+    @GetMapping() //READ
+    public ArrayList<TurnoModel> LeerListaDeTurnos() throws IOException {
+        ca.main();
         return turnoService.LeerListaDeTurnos();
     }
 

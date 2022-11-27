@@ -1,0 +1,4 @@
+ID - ID de dentista - ID de paciente
+1         1         11        
+ID - ID de dentista - ID de paciente
+2         1         11        
