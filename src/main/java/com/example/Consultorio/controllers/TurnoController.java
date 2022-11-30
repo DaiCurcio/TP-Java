@@ -14,14 +14,15 @@ import java.util.ArrayList;
 
 
 @RestController
-@RequestMapping("/Turno")
+@RequestMapping("/Turno") //url
 public class TurnoController {
     @Autowired
-    ITurnoService turnoService;
+    ITurnoService turnoService; //controller llama al servicio
 
     @Autowired
-    public TurnoRepository turnosrepo;
+    public TurnoRepository turnosrepo; //servicio llama al repo
 
+     //metodo de crear archivo
     public CrearArchivo ca;
 
     public TurnoController(CrearArchivo ca)
@@ -33,7 +34,6 @@ public class TurnoController {
         ca.main();
         return turnoService.LeerListaDeTurnos();
     }
-
     @PostMapping() //CREATE
     public TurnoModel createTurno(@RequestBody TurnoModel turnoModel)
     {

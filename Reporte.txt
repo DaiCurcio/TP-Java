@@ -1,4 +1,20 @@
 ID - ID de dentista - ID de paciente
-1         1         11        
+1         1         10        
 ID - ID de dentista - ID de paciente
-2         1         11        
+2         2         11        
+ID - ID de dentista - ID de paciente
+3         2         2         
+ID - ID de dentista - ID de paciente
+4         1         2         
+ID - ID de dentista - ID de paciente
+5         2         11        
+ID - ID de dentista - ID de paciente
+6         3         4         
+ID - ID de dentista - ID de paciente
+7         2         11        
+ID - ID de dentista - ID de paciente
+8         2         11        
+ID - ID de dentista - ID de paciente
+9         2         11        
+ID - ID de dentista - ID de paciente
+10        2         11        

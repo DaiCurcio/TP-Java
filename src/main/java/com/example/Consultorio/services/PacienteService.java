@@ -10,11 +10,11 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-@Service
+@Service //tipo
 public class PacienteService implements IPacienteService
 {
-    @Autowired
-    PacienteRepository pacienteRepository;
+    @Autowired // instancia
+    PacienteRepository pacienteRepository; //llama al repositorio
 
     public ArrayList<PacienteModel>LeerListaDePacientes()
     {

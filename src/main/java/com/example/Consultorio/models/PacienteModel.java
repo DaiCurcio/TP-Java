@@ -6,28 +6,31 @@ import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
 
-@Entity
-@Table(name = "paciente")
+@Entity  //clase
+@Table(name = "paciente")  //url
 public class PacienteModel {
     //atributos
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Id  //pk
+    @GeneratedValue(strategy = GenerationType.IDENTITY) //incremental
+
+    //atributos
     private int id_paciente;
     private String nombre;
     private String apellido;
     private String fechaTurno = (new SimpleDateFormat("dd/MM/yyyy")).format(new Date());
 
+     //constructor
     public PacienteModel(Integer id_paciente, String nombre, String apellido, String fechaTurno, Set<TurnoModel> turno) {
         this.id_paciente = id_paciente;
         this.nombre = nombre;
         this.apellido = apellido;
         this.fechaTurno = fechaTurno;
     }
-
+    //constructor vacio
     public PacienteModel() {
 
     }
-
+    //getter and setter
     public int getId_paciente() {
         return id_paciente;
     }

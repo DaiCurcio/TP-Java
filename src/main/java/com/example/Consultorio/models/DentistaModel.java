@@ -4,27 +4,28 @@ import javax.persistence.*;
 import java.util.HashSet;
 import java.util.Set;
 
-@Entity
-@Table(name = "dentista")
+@Entity //clase
+@Table(name = "dentista") //tabla
 public class DentistaModel {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Id // primary key
+    @GeneratedValue(strategy = GenerationType.IDENTITY) //incremental
+    //atributos
     private int id_dentista;
     private String nombre;
     private String apellido;
     private Integer matricula;
-
+     //constructor
     public DentistaModel(int id_dentista, String nombre, String apellido, Integer matricula) {
         this.id_dentista = id_dentista;
         this.nombre = nombre;
         this.apellido = apellido;
         this.matricula = matricula;
     }
-
+    //constructor vacio
     public DentistaModel() {
     }
-
+     // getters and setters
     public int getId_dentista() {
         return id_dentista;
     }

@@ -11,11 +11,11 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-@Service
+@Service // tipo
 public class TurnoService implements ITurnoService
 {
-    @Autowired
-    TurnoRepository turnoRepository;
+    @Autowired //instancia
+    TurnoRepository turnoRepository; //llama al repositorio
 
     public ArrayList<TurnoModel> LeerListaDeTurnos()
     {

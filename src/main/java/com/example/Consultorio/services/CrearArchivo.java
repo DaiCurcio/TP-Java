@@ -13,24 +13,24 @@ import java.util.Collection;
 import java.util.List;
 import java.util.stream.Collectors;
 
-@Service
+@Service // llama al servicio donde esta el metodo
 public class CrearArchivo implements Serializable
 {
-    @Autowired
+    @Autowired    //instancia el repositorio
     public TurnoRepository repo;
     public void main() throws IOException
-    {
+    {    //lee la lista de turnos q la busca en el ropositorio
         List<TurnoModel> LeerListaDeTurnos =
                         repo.findAll();
-
+        //nombre del txt
         String nombreFichero = "Reporte.txt";
-
+         //crea un objeto fichero si no existe.
         File f = new File(nombreFichero);
         if (!f.exists()) f.createNewFile();
 
         DataOutputStream dos = new DataOutputStream(new FileOutputStream(f));
         String newLine = System.getProperty("line.separator");
-
+        //recorre la lista de turnos con las columnas q necesita como parametro y las obtiene
         for (TurnoModel p : LeerListaDeTurnos){
             dos.writeBytes(String.format("%s - %s - %s",
                     "ID", "ID de dentista", "ID de paciente"));

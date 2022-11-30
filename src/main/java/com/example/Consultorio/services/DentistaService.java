@@ -11,11 +11,11 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-@Service
+@Service //tipo
 public class DentistaService implements IDentistaService
 {
-    @Autowired
-    DentistaRepository dentistaRepository;
+    @Autowired //instancia
+    DentistaRepository dentistaRepository; //servicio llama a repositorio
 
     //LEER LISTA DE DENTISTAS
     public ArrayList<DentistaModel> LeerListaDeDentistas()

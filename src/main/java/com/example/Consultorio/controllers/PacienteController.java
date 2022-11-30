@@ -9,13 +9,13 @@ import org.springframework.web.bind.annotation.*;
 import java.util.ArrayList;
 
 @RestController
-@RequestMapping("/Paciente")
+@RequestMapping("/Paciente") // url
 public class PacienteController {
     @Autowired
-    IPacienteService pacienteService;
+    IPacienteService pacienteService; //llama al servicio
 
     @Autowired
-    PacienteRepository pacienteRepository;
+    PacienteRepository pacienteRepository; //llama a repositorio
     @GetMapping() //READ
     public ArrayList<PacienteModel> LeerListaDePacientes()
     {
